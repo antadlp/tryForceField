@@ -5,7 +5,7 @@
 %single molecule with a specif orientation with a geometryc
 %origin centered on the oxigen atom
 
-%For the orientation it will be used the Euler Angles.
+%For the orientation it will be used rotation matrix.
 
 %The space units will be Ångström
 
@@ -16,17 +16,47 @@
 % Or(2): must be yo
 % Or(3): must be zo
 %
-% {angle1, angle2, angle3}: Euler Angles
+% {anglex, angley, anglez}: around an axis
+% the angle units are degrees
 %
 %
 
 
-function [x y z] = singleWaterTemplate(Or, angle1, angle2, angle3)
+function [O H1 H2] = singleWaterTemplate(Or, anglex, angley, anglez)
 
 d = 0.9584; % distance between Oxigen and a Hidrogen in
 % equilibrium
 
-O = [Or(1), Or(2), Or(3)];
-H1 = [Or(1), Or(2)+d, Or(3)];
+O = [Or(1), Or(2), Or(3)]';
+H1 = [Or(1), Or(2)+d, Or(3)]';
+
+theta = 104.45;
+
+seno = sind(theta);
+coseno = cosd(theta);
+
+H2 = rotz(-104.45)*H1;
+
+% rotations
+
+% x-axis
+
+H1 = rotx(anglex)*H1;
+H2 = rotx(anglex)*H2;
+
+
+% y-axis
+
+H1 = roty(angley)*H1;
+H2 = roty(angley)*H2;
+
+% z-axis
+
+H1 = rotz(anglez)*H1;
+H2 = rotz(anglez)*H2;
+
+
+
+
 
 
