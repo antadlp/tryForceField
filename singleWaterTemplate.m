@@ -30,31 +30,41 @@ d = 0.9584; % distance between Oxigen and a Hidrogen in
 O = [Or(1), Or(2), Or(3)]';
 H1 = [Or(1), Or(2)+d, Or(3)]';
 
+H1p = H1-O;
+
 theta = 104.45;
 
 seno = sind(theta);
 coseno = cosd(theta);
 
-H2 = rotz(-104.45)*H1;
+H2p = rotz(-104.45)*H1p;
+H2 = O + H2p;
 
 % rotations
 
 % x-axis
 
-%H1 = rotx(anglex)*H1;
-%H2 = rotx(anglex)*H2;
+H1 = O + rotx(anglex)*H1p;
+H2 = O + rotx(anglex)*H2p;
 %
 
+
+H1p = H1-O;
+H2p = H2-O;
+
 % y-axis
-%
-%H1 = roty(angley)*H1;
-%H2 = roty(angley)*H2;
-%
-%% z-axis
-%
-%H1 = rotz(anglez)*H1;
-%H2 = rotz(anglez)*H2;
-%
+
+H1 = O + roty(angley)*H1p;
+H2 = O + roty(angley)*H2p;
+
+H1p = H1-O;
+H2p = H2-O;
+
+% z-axis
+
+H1 = O + rotz(anglez)*H1p;
+H2 = O + rotz(anglez)*H2p;
+
 
 
 
