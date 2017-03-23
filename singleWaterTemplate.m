@@ -41,20 +41,20 @@ H2 = rotz(-104.45)*H1;
 
 % x-axis
 
-H1 = rotx(anglex)*H1;
-H2 = rotx(anglex)*H2;
-
+%H1 = rotx(anglex)*H1;
+%H2 = rotx(anglex)*H2;
+%
 
 % y-axis
-
-H1 = roty(angley)*H1;
-H2 = roty(angley)*H2;
-
-% z-axis
-
-H1 = rotz(anglez)*H1;
-H2 = rotz(anglez)*H2;
-
+%
+%H1 = roty(angley)*H1;
+%H2 = roty(angley)*H2;
+%
+%% z-axis
+%
+%H1 = rotz(anglez)*H1;
+%H2 = rotz(anglez)*H2;
+%
 
 
 
