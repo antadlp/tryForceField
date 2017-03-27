@@ -19,11 +19,16 @@ fprintf(file, '\n\tmolec');
 fprintf(file, '\n');
 
 file2 = fopen('settingGeometry.dat','w');
+file3 = fopen('settingConstantes.dat','w');
 
+cteOH = 20.0;
+cteHH = 40.0;
 
+l=0;
 for i=1:xd
    for j=1:yd
       for k=1:zd
+
          
          rx = a + (b-a).*rand(1, 1);
          ry = a + (b-a).*rand(1, 1);
@@ -44,12 +49,17 @@ for i=1:xd
         
          %Oxygen is bound only with two hidrogens
          
-         fprintf(file2, '%d   %d   %d', 2, ...
-         (3*(i)*(j)*(k)-3) + 2, ...
-         (3*(i)*(j)*(k)-3) + 3);
+         fprintf(file2, '%d   %d',  ...
+         l + 2, ...
+         l + 3);
          fprintf(file2, '\n');
  
 
+         fprintf(file3, '%d   %d',  ...
+         cteOH, ...
+         cteOH);
+         fprintf(file3, '\n');
+ 
 
          %Hidrogens bound  with one oxygen and a rigid union
          %withe the other hidrogen
@@ -57,17 +67,31 @@ for i=1:xd
          % second %d : oxigen to bound
          % third %d : hidrogen to bound 
 
-         fprintf(file2, '%d   %d   %d', 2, ...
-         (3*(i)*(j)*(k)-3) + 1, ...
-         (3*(i)*(j)*(k)-3) + 3);
+         fprintf(file2, '%d   %d',  ...
+         l + 1, ...
+         l + 3);
          fprintf(file2, '\n');
  
+         fprintf(file3, '%d   %d',  ...
+         cteOH, ...
+         cteHH);
+         fprintf(file3, '\n');
  
 
-         fprintf(file2, '%d   %d   %d', 2, ...
-         (3*(i)*(j)*(k)-3) + 1, ...
-         (3*(i)*(j)*(k)-3) + 2);
+
+         fprintf(file2, '%d   %d',  ...
+         l + 1, ...
+         l + 2);
          fprintf(file2, '\n');
+
+         fprintf(file3, '%d   %d',  ...
+         cteOH, ...
+         cteHH);
+         fprintf(file3, '\n');
+
+
+         
+         l = l + 3 ;
 
 
 
